@@ -5,3 +5,4 @@
 `mkcert "*.localhost.pomerium.io"`
 4. Change provider config in file `config.yaml`: https://www.pomerium.com/docs/identity-providers/google
 5. Run docker-compose: `docker-compose up -d`
+6. Access FE using the domain link https://fe.localhost.pomerium.io
