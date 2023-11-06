@@ -18,21 +18,25 @@ certificate_key_file: /pomerium/privkey.pem
 # appropriate docs for your IdP to configure Pomerium accordingly.               #
 ##################################################################################
 idp_provider: google
-idp_client_id: 27268436054-728dl8ih8s9rd87ev3d02imm4o8297dn.apps.googleusercontent.com
-idp_client_secret: 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
+# Google client_id, client_secret: https://www.pomerium.com/docs/identity-providers/google
+idp_client_id: GOOGLE_CLIENT_ID
+idp_client_secret: GOOGLE_CLIENT_SECRET
+jwt_claims_headers: email,groups,user,permissions,nickname
 
 # Generate 256 bit random keys  e.g. `head -c32 /dev/urandom | base64`
 cookie_secret: V2JBZk0zWGtsL29UcFUvWjVDWWQ2UHExNXJ0b2VhcDI=
+cookie_domain: .localhost.pomerium.io
+cookie_name: __local_carparking_one
 
 # https://pomerium.com/reference/#routes
 routes:
   - from: https://api.localhost.pomerium.io
-    to: http://192.168.50.166:5001
+    to: http://192.168.50.166:5001 # Ip address local
     allowed_domains:
       - azoom.jp
     pass_identity_headers: true
-  - from: https://verify.localhost.pomerium.io
-    to: http://192.168.50.166:3001
+  - from: https://fe.localhost.pomerium.io
+    to: http://192.168.50.166:3001 # Ip address local
     allowed_domains:
       - azoom.jp
     pass_identity_headers: true
